@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 
 
 function App() {
-  const [activityName, setActivityName] = useState("");
+  const [activity, setActivity] = useState({});
   const activityId = "UtbkRmd8E10uM24nzeSL";
 
   useEffect(() => {
@@ -14,7 +14,7 @@ function App() {
       FirestoreService.getActivity(activityId)
         .then(activity => {
           if (activity.exists) {
-            setActivityName(activity.data().name);
+            setActivity(activity.data());
             console.log(activity.data());
           } else {
             // throw some error
@@ -37,8 +37,7 @@ function App() {
         >
           Learn React
         </a>
-        HIIII
-        {activityName}
+        {activity}
       </header>
     </div>
   );
