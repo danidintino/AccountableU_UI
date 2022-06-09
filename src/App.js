@@ -1,7 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
 import * as FirestoreService from './services/firestore';
-import { getActivity } from "./services/firestore";
 import { useState, useEffect } from 'react';
 
 
