@@ -37,7 +37,7 @@ function App() {
         >
           Learn React
         </a>
-        {activity}
+        {activity.name} {activity.current} {activity.goal}
       </header>
     </div>
   );
