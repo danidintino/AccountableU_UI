@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import App from './App.tsx';
 import reportWebVitals from './reportWebVitals';
-// import { initializeApp, applicationDefault, cert }  from 'firebase-admin/app';
-// import { getFirestore, Timestamp, FieldValue } from 'firebase-admin/firestore';
+import './styles/header.scss';
+import './styles/content.scss';
 
-// initializeApp();
-// const db = getFirestore();
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
