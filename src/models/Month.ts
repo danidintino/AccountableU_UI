@@ -1,6 +1,4 @@
 import { Activity } from "./Activity";
-import { Category } from "./Category";
-import { User } from "./User";
 import { Week } from "./Week";
 
 export interface Month {

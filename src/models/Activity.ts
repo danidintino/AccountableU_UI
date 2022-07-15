@@ -1,4 +1,3 @@
-import { User } from "./User";
 import { ActivityStatus } from "./enum";
 import { Category } from "./Category";
 

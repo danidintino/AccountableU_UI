@@ -1,4 +1,3 @@
-import { Activity } from "./Activity";
 import { Month } from "./Month";
 
 export interface User {
