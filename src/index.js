@@ -5,6 +5,8 @@ import App from './App.tsx';
 import reportWebVitals from './reportWebVitals';
 import './styles/header.scss';
 import './styles/content.scss';
+import './styles/login.scss';
+import './styles/dashboard.scss';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

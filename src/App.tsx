@@ -1,30 +1,23 @@
 import './App.css';
-import { useState, useEffect } from 'react';
-import Header from './components/Header';
-import Content from './components/Content';
-import { getUser } from './services/firestore';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Login from './components/Login/Login';
+import Register from './components/Login/Register';
+import Reset from './components/Login/Reset';
+import Dashboard from './components/Dashboard';
 
 
 const App = () => {
-  const [user, setUser] = useState({});
-  const userId = "sr1Lr2xL6X0hlJ1VhDAO";
-
-  useEffect(() => {
-    if (userId) {
-      getUser(userId).then((userObject) => {
-        if (userObject) {
-          setUser(userObject);
-          console.log(user);
-        }
-      });
-    }
-    console.log(user);
-  }, []);
   return (
     <div className="App">
-      <Header/>
-      <Content/>
-      {/* {user.firstName} {user.lastName} */}
+      <Router>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/reset" element={<Reset />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
