@@ -1,6 +1,22 @@
 .header {
-  text-align: left;
-  padding: 4px 10px;
-  box-shadow: 1px 1px 16px #808080;
-  background-color: #D3D3D3;
+  z-index: 3;
+  position: relative;
+  &__content {
+    padding: 8px 10px;
+    box-shadow: 1px 1px 16px #808080;
+    background-color: #D3D3D3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__userInfo {
+      &__btn {
+        padding: 4px 8px 4px 8px;
+        border: none;
+        color: white;
+        background-color: black;
+        cursor: pointer;
+        margin-left: 20px;
+      }
+    }
+  }
 }

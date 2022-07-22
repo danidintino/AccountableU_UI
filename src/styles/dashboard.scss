@@ -23,4 +23,12 @@
   div {
     margin-top: 7px;
   }
+  .goalForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    input {
+      display: block;
+    }
+  }
 }

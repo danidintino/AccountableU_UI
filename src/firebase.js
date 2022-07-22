@@ -48,7 +48,7 @@ const logInWithGoogle = async () => {
     if (docs.docs.length === 0) {
       await addDoc(collection(db, "users"), {
         uid: user.uid,
-        name: user.displayName,
+        displayName: user.displayName,
         authProvider: "google",
         email: user.email,
       });
@@ -68,13 +68,13 @@ const logInWithEmailAndPassword = async (email, password) => {
   }
 };
 
-const registerWithEmailAndPassword = async (name, email, password) => {
+const registerWithEmailAndPassword = async (displayName, email, password) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
     await addDoc(collection(db, "users"), {
       uid: user.uid,
-      name,
+      displayName: user.displayName,
       authProvider: "local",
       email,
     });
@@ -98,6 +98,44 @@ const logout = () => {
   signOut(auth);
 };
 
+
+const createGoal = async (user, newGoal) => {
+  try {
+    const docRef = await addDoc(collection(db, "goals"), { ...newGoal, uid: user.uid });
+    return docRef;
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
+}
+
+const getGoalsByUid = async (uid) => {
+  try {
+    const q = query(collection(db, "goals"), where("uid", "==", uid));
+    const docs = await getDocs(q);
+    if (docs) {
+      const docsList = [];
+      docs.forEach((doc) => {
+        docsList.push({ ...doc.data(), id: doc.id });
+      });
+      return docsList;
+    }
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
+}
+
+// const updateGoal = async (user, updatedGoal) => {
+//   try {
+//     const docRef = await setDoc(collection(db, "goals"), { ...updatedGoal, uid: user.uid });
+//     return docRef;
+//   } catch (err) {
+//     console.error(err);
+//     alert(err.message);
+//   }
+// }
+
 export {
   auth,
   db,
@@ -106,4 +144,6 @@ export {
   registerWithEmailAndPassword,
   sendPasswordReset,
   logout,
+  createGoal,
+  getGoalsByUid,
 };
